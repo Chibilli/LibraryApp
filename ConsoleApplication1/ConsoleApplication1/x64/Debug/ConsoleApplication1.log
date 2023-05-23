@@ -1,5 +1,6 @@
 ﻿  ConsoleApplication1.cpp
 C:\Users\erdem\OneDrive\Belgeler\GitHub_Projects\LibraryApp\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(21,7): warning C4101: 'flag': yerel değişken başvurusu kaldırıldı
+  Model.cpp
   ViewModel.cpp
   Kod Üretiliyor...
   ConsoleApplication1.vcxproj -> C:\Users\erdem\OneDrive\Belgeler\GitHub_Projects\LibraryApp\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

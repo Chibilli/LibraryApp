@@ -4,10 +4,10 @@
 using namespace std;
 struct Book
 {
+	int bookid = 0;
 	string bookname;
 	string author;
 	string publishers;
-	int bookid = 0;
 	string type;
 	string specialdetails;
 };
