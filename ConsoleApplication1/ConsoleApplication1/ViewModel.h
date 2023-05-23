@@ -22,14 +22,15 @@ public:
 	{
 		int f;
 		Book book;
+		cin.ignore();
 		cout << "Kitap Ismi: ";
-		cin >> book.bookname;
+		getline(cin, book.bookname);
 		cout << "Kitap Yazari: ";
-		cin >> book.author;
-		cout << "YayýnEvi: ";
-		cin >> book.publishers;
+		getline(cin, book.author);
+		cout << "YayinEvi:  ";
+		getline(cin, book.publishers);
 		cout << "Kitap Turu: ";
-		cin >> book.type;
+		getline(cin, book.type);
 		cout << "Ozel Detay Girmek Ister misiniz? Evet/Hayir ---> 1/0";
 		cin >> f;
 		switch (f) {
@@ -38,7 +39,8 @@ public:
 			break;
 		case 1:
 			cout << "Detayi Girin.";
-			cin >> book.specialdetails;
+			cin.ignore();
+			getline(cin, book.specialdetails);
 			break;
 		}
 
@@ -52,15 +54,22 @@ public:
 		}
 		else
 		{
+			liste << "{\n";
+			liste << "Id:  ";
 			liste << book.bookid;
-			liste << "\t";
+			liste << "\n";
+			liste << "BookName:  ";
 			liste << book.bookname;
-			liste << "\t";
+			liste << "\n";
+			liste << "Author:  ";
 			liste << book.author;
-			liste << "\t";
+			liste << "\n"; 
+			liste << "Publisher:  ";
 			liste << book.publishers;
-			liste << "\t";
+			liste << "\n";
+			liste << "SpecialDetails:  ";
 			liste << book.specialdetails;
+			liste << "\n}";
 		}
 
 		book.bookid++;

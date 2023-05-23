@@ -4,12 +4,12 @@
 using namespace std;
 struct Book
 {
-	char bookname;
-	char author;
-	char publishers;
+	string bookname;
+	string author;
+	string publishers;
 	int bookid = 0;
-	char type;
-	char specialdetails;
+	string type;
+	string specialdetails;
 };
 
 
