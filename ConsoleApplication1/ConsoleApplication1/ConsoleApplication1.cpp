@@ -48,6 +48,7 @@ int main()
 		case 3:
 			system("cls");
 			cout << "Kitap Listesini Goruntule\n\n";
+			bookViewModel.getAllBooks();
 			break;
 		}
 	}

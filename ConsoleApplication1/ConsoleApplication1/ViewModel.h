@@ -4,10 +4,15 @@
 #include <iostream>
 #include <fstream>
 #include "Model.cpp"
+#include "Helper.h"
 
 using namespace std;
 class ViewModel
 {
+private:
+	const string FILE_URL = "C:\\Project\\Library.txt";
+	const string FILE_NAME = "Library.txt";
+
 public:
 	ViewModel() {
 		User user = {"admin", "admin123"};
@@ -46,7 +51,7 @@ public:
 
 
 		fstream liste;
-		liste.open("C:\\Project\\Kütüphane.txt", ios::out | ios::app | ios::ate);
+		liste.open(FILE_NAME , ios::out | ios::app | ios::ate);
 
 		if (!liste.is_open())
 		{
@@ -55,21 +60,21 @@ public:
 		else
 		{
 			liste << "{\n";
-			liste << "Id:  ";
+			liste << "Id:";
 			liste << book.bookid;
 			liste << "\n";
-			liste << "BookName:  ";
+			liste << "BookName:";
 			liste << book.bookname;
 			liste << "\n";
-			liste << "Author:  ";
+			liste << "Author:";
 			liste << book.author;
 			liste << "\n"; 
-			liste << "Publisher:  ";
+			liste << "Publisher:";
 			liste << book.publishers;
 			liste << "\n";
-			liste << "SpecialDetails:  ";
+			liste << "SpecialDetails:";
 			liste << book.specialdetails;
-			liste << "\n}";
+			liste << "\n},\n";
 		}
 
 		book.bookid++;
@@ -94,5 +99,27 @@ public:
 		User user = {userName, passWord};
 		return user;
 	}
+	void  getAllBooks() {
+		std::ifstream Liste(FILE_NAME);
+		if (Liste.is_open()) {
+			if (!Helper::isEmpty(Liste)) {
+				string line;
+				while(getline(Liste, line)) { 
+					cout << line << "\n"; 
+				}
+			}
+			else {
+				cout << "Dosyanin icerisi bos." << endl;
+			}
+		}
+		else {
+			cout << "Dosya okunamadi." << endl;
+		}
+		Liste.close();
+
+	}
+
+
+	
 };
 
