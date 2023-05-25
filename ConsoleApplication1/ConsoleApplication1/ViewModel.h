@@ -104,25 +104,6 @@ public:
 		User user = {userName, passWord};
 		return user;
 	}
-	void  getAllBooks() {
-		std::ifstream Liste(FILE_NAME);
-		if (Liste.is_open()) {
-			if (!Helper::isEmpty(Liste)) {
-				string line;
-				while(getline(Liste, line)) { 
-					cout << line << "\n"; 
-				}
-			}
-			else {
-				cout << "Dosyanin icerisi bos." << endl;
-			}
-		}
-		else {
-			cout << "Dosya okunamadi." << endl;
-		}
-		Liste.close();
-
-	}
 
 	void listBooks() {
 		if (bookList.size() != 0) {
@@ -137,9 +118,20 @@ public:
 		else {
 			cout << "liste bos" << endl;
 		}
+	}
 
+	void deleteBook() {
+	    
+		int bookId;
+		cin >> bookId;
+
+		for (Book book : bookList) {
+			if (bookId == book.bookid) {
+				int currentIndex = Helper::getIndex(bookList, book);
+				bookList.erase(bookList.begin() + currentIndex);
+			}
+		}
 		
-
 
 	}
 
