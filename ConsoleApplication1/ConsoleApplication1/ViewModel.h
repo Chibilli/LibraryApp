@@ -5,6 +5,7 @@
 #include <fstream>
 #include "Model.cpp"
 #include "Helper.h"
+#include <vector>
 
 using namespace std;
 class ViewModel
@@ -12,6 +13,7 @@ class ViewModel
 private:
 	const string FILE_URL = "C:\\Project\\Library.txt";
 	const string FILE_NAME = "Library.txt";
+    
 
 public:
 	ViewModel() {
@@ -20,6 +22,8 @@ public:
 	}
 	string userName;
 	string passWord;
+protected:
+	vector <Book> bookList;
 	
 
 public:
@@ -75,6 +79,7 @@ public:
 			liste << "SpecialDetails:";
 			liste << book.specialdetails;
 			liste << "\n},\n";
+			bookList.push_back(book);
 		}
 
 		book.bookid++;
@@ -116,6 +121,25 @@ public:
 			cout << "Dosya okunamadi." << endl;
 		}
 		Liste.close();
+
+	}
+
+	void listBooks() {
+		if (bookList.size() != 0) {
+			for (Book book : bookList) {
+				cout << book.bookid << endl;
+				cout << book.bookname << endl;
+				cout << book.author << endl;
+				cout << book.publishers << endl;
+				cout << book.specialdetails << endl;
+			}
+		}
+		else {
+			cout << "liste bos" << endl;
+		}
+
+		
+
 
 	}
 

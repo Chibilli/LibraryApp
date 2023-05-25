@@ -1,26 +1,14 @@
 {
 Id:0
-BookName:asdas
-Author:asdasd
-Publisher:asdasd
-SpecialDetails:
-}, {
-Id:0
-BookName:adasdas
-Author:adasd1234
-Publisher:asdasdas
-SpecialDetails:asdasdasd
-}, {
-Id:0
-BookName:NamikBugra
-Author:Karabiyik
-Publisher:Kiddanube4
+BookName:namik
+Author:karabiyik
+Publisher:namimimi
 SpecialDetails:
 },
 {
 Id:0
-BookName:tayyip
-Author:tayyip1
-Publisher:asdasds
-SpecialDetails:asdadasd
+BookName:asdasd
+Author:asdasd
+Publisher:asdasd
+SpecialDetails:adada
 },
