@@ -27,31 +27,21 @@ protected:
 	
 
 public:
-	void addbook()
+	void addBook()
 	{
-		int f;
 		Book book;
 		cin.ignore();
-		cout << "Kitap Ismi: ";
+		cout << "Book Name: ";
 		getline(cin, book.bookname);
-		cout << "Kitap Yazari: ";
+		cout << "Author: ";
 		getline(cin, book.author);
-		cout << "YayinEvi:  ";
+		cout << "Publisher: ";
 		getline(cin, book.publishers);
-		cout << "Kitap Turu: ";
+		cout << "Type Of Book: ";
 		getline(cin, book.type);
-		cout << "Ozel Detay Girmek Ister misiniz? Evet/Hayir ---> 1/0";
-		cin >> f;
-		switch (f) {
-		case 0:
+		cout << "Enter Detail: ";
+		getline(cin, book.specialdetails);
 
-			break;
-		case 1:
-			cout << "Detayi Girin.";
-			cin.ignore();
-			getline(cin, book.specialdetails);
-			break;
-		}
 
 
 		fstream liste;
@@ -97,12 +87,6 @@ public:
 			cout << "Kullanici girisi basarili" << endl;
 			return false;
 		}
-	}
-
-	User createUser(string userName, string passWord) {
-
-		User user = {userName, passWord};
-		return user;
 	}
 
 	void listBooks() {

@@ -11,68 +11,53 @@ using namespace std;
 int main()
 {
 	ViewModel bookViewModel;
-	
+
 	cout << "Kullanici Adi: ";
 	cin >>  bookViewModel.userName;
 	cout << "Kullanici Sifresi: ";
 	cin >> bookViewModel.passWord;
 
 	if (bookViewModel.Login(bookViewModel.userName, bookViewModel.passWord)) {
-		int flag;
-		flag:
-		system("cls");
-		int n;
-		cout << "1-Kitap Ekle\n2-Kitap Cikar\n3-Kitap Listesini Goruntule\n\n";
-		cout << "Islem secin --->";
-		cin >> n;
-		switch (n)
+		do
 		{
-		case 1:
+			int flag, choice;
 			system("cls");
-			bookViewModel.addbook();
-			cout << "1-Geri Dön\n2-Uygulamadan Cik";
-			int s;
-			cin >> s;
-			switch (s) {
+			cout << "\n\n\n\t Main Menu";
+			cout << "\n\n\n\t 1-Add Book";
+			cout << "\n\n\n\t 2-Delete Book";
+			cout << "\n\n\n\t 3-View The Book List";
+			cout << "\n\n\n\t 4-Exit";
+			cout << "\n\n\n\t Input decision--> ";
+			cin >> choice;
+			switch (choice)
+			{
 			case 1:
-				goto flag;
+				system("cls");
+				flag:
+				bookViewModel.addBook();
+				cout << "\n\n\n\t 1-Add Another Book\n\n\t 2-Go Back To The Menu";
+				cin >> choice;
+				if (choice == 1)
+					goto flag;
 				break;
 			case 2:
+				system("cls");
+				flag:
+				bookViewModel.deleteBook();
+				cout<< "\n\n\n\t 1-Delete Another Book\n\n\t 2-Go Back To The Menu";
+				cin >> choice;
+				if (choice == 1)
+					goto flag;
 				break;
+			case 3:
+				system("cls");
+				flag:
+				bookViewModel.listBooks();
+				cout << "\n\n\n 1-Go Back To The Menu";	
 			}
-			break;
-		case 2:
-			system("cls");
-			cout << "----Kitap Cikar----\n\n";
-			break;
-		case 3:
-			system("cls");
-			cout << "Kitap Listesini Goruntule\n\n";
-			bookViewModel.listBooks();
-			break;
-		}
-	}
-	else
-	{
-		system("cls");
-		int n;
-		cout << "Kullanici girisi basarili\n\n\n";
-		cout << "1-Kitap Ekle\n2-Kitap Listesini Goruntule\n\n";
-		cout << "Islem Secin --->";
-		cin >> n;
-		switch (n)
-		{
-		case 1:
-			system("cls");
-			cout << "----Kitap Ekleme----\n\n";
-			break;
+			
 
-		case 2:
-			system("cls");
-			cout << "Kitap Listesini Goruntule\n\n";
-			break;
-		}
-
+		} while (choice != 4);
 
 	}
 }
