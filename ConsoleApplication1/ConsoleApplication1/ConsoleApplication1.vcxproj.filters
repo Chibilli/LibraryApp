@@ -19,12 +19,9 @@
     <Filter Include="Kaynak Dosyalar\ViewModel">
       <UniqueIdentifier>{b083fcca-cc92-4585-ae78-b90e70b11af4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Kaynak Dosyalar\Helper">
-      <UniqueIdentifier>{b6325fa7-53f9-4fbf-9023-60fcfe809a99}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleApplication1.cpp">
+    <ClCompile Include="Project_LibrarySystem.1.cpp">
       <Filter>Kaynak Dosyalar</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
@@ -32,9 +29,6 @@
     </ClCompile>
     <ClCompile Include="ViewModel.cpp">
       <Filter>Kaynak Dosyalar\ViewModel</Filter>
-    </ClCompile>
-    <ClCompile Include="Helper.cpp">
-      <Filter>Kaynak Dosyalar\Helper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,8 +38,8 @@
     <ClInclude Include="ViewModel.h">
       <Filter>Üst Bilgi Dosyaları</Filter>
     </ClInclude>
-    <ClInclude Include="Helper.h">
-      <Filter>Üst Bilgi Dosyaları</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="listBook.txt" />
   </ItemGroup>
 </Project>

@@ -4,15 +4,12 @@
 #include <iostream>
 #include <fstream>
 #include "Model.cpp"
-#include "Helper.h"
-#include <vector>
 
 using namespace std;
 class ViewModel
 {
 private:
-	const string FILE_URL = "C:\\Project\\Library.txt";
-	const string FILE_NAME = "Library.txt";
+	const string FILE_NAME = "listBook.txt";
     
 
 public:
@@ -22,13 +19,11 @@ public:
 	}
 	string userName;
 	string passWord;
-protected:
-	vector <Book> bookList;
-	
 
 public:
 	void addBook()
 	{
+		system("cls");
 		Book book;
 		cin.ignore();
 		cout << "Book Name: ";
@@ -39,40 +34,31 @@ public:
 		getline(cin, book.publishers);
 		cout << "Type Of Book: ";
 		getline(cin, book.type);
-		cout << "Enter Detail: ";
-		getline(cin, book.specialdetails);
 
+		fstream list;
+		list.open(FILE_NAME , ios::out | ios::app | ios::ate);
 
-
-		fstream liste;
-		liste.open(FILE_NAME , ios::out | ios::app | ios::ate);
-
-		if (!liste.is_open())
+		if (!list.is_open())
 		{
 			cout << "Kitap Yazdirilamadi!Tekrar Deneyin!";
 		}
 		else
 		{
-			liste << "{\n";
-			liste << "Id:";
-			liste << book.bookid;
-			liste << "\n";
-			liste << "BookName:";
-			liste << book.bookname;
-			liste << "\n";
-			liste << "Author:";
-			liste << book.author;
-			liste << "\n"; 
-			liste << "Publisher:";
-			liste << book.publishers;
-			liste << "\n";
-			liste << "SpecialDetails:";
-			liste << book.specialdetails;
-			liste << "\n},\n";
-			bookList.push_back(book);
+			list << "{\n";
+			list << "BookName:";
+			list << book.bookname;
+			list << "\n";
+			list << "Author:";
+			list << book.author;
+			list << "\n"; 
+			list << "Publisher:";
+			list << book.publishers;
+			list << "\n";
+			list << "Type Of Book:";
+			list << book.type;
+			list << "\n},\n";
+			list.close();
 		}
-
-		book.bookid++;
 	}
 
 	bool Login(string username, string password)
@@ -90,33 +76,69 @@ public:
 	}
 
 	void listBooks() {
-		if (bookList.size() != 0) {
-			for (Book book : bookList) {
-				cout << book.bookid << endl;
-				cout << book.bookname << endl;
-				cout << book.author << endl;
-				cout << book.publishers << endl;
-				cout << book.specialdetails << endl;
+		system("cls");
+		ifstream list(FILE_NAME);
+		if (list.is_open())
+		{
+			string line;
+			if (getline(list, line))
+			{
+				cout << "\n\t\t All Books\n\n";
+				cout << "\t" << line << endl;
+			}
+			else
+			{
+				cout << "\n\t Don't Found Book." << endl;
+			}
+			while (getline(list, line))
+			{
+				cout << "\t" << line << endl;
 			}
 		}
-		else {
-			cout << "liste bos" << endl;
+		else
+		{
+			cout << "\n\t Don't Found Book." << endl;
 		}
+		list.close();
+		cout << "Press Any Key To Return To The Menu.";
+		system("pause>0");
 	}
 
-	void deleteBook() {
-	    
-		int bookId;
-		cin >> bookId;
+	void deleteBook() 
+	{
+		system("cls");
+		string bookName;
+		cout << "\n\tEnter the name of the book to delete: ";
+		cin.ignore();
+		getline(cin, bookName);
 
-		for (Book book : bookList) {
-			if (bookId == book.bookid) {
-				int currentIndex = Helper::getIndex(bookList, book);
-				bookList.erase(bookList.begin() + currentIndex);
+		ifstream inputFile(FILE_NAME);
+		ofstream tempFile("temp.txt");
+		string line;
+		int linesToDelete = 0;
+
+		while (getline(inputFile, line))
+		{
+			if (line.find("BookName:" + bookName) != string::npos)
+			{
+				linesToDelete = 5; 
+				continue;
 			}
+			if (linesToDelete > 0)
+			{
+				linesToDelete--;
+				continue;
+			}
+			tempFile << line << endl;
 		}
-		
 
+		inputFile.close();
+		tempFile.close();
+
+		remove(FILE_NAME.c_str());
+		rename("temp.txt", FILE_NAME.c_str());
+
+		cout << "\n\tBook '" << bookName << "' have been successfully deleted." << endl;
 	}
 
 
