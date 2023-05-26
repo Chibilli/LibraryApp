@@ -10,7 +10,6 @@ class ViewModel
 {
 private:
 	const string FILE_NAME = "listBook.txt";
-    
 
 public:
 	ViewModel() {
